@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @question.img_url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @question.description %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @question.points %>
+</p>
+
+<p>
+  <strong>Courses:</strong>
+  <%= @question.courses %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
