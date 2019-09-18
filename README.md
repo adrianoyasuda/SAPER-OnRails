@@ -1,20 +1,26 @@
 # SAPER OnRails
 
-** Ruby version**
+## Class Diagram
+
+![Class Diagram - Rails](https://user-images.githubusercontent.com/48556068/65173024-68984c00-da24-11e9-8238-65eb38ae478c.png)
+
+
+
+**Ruby version**
 - 2.6.0
 
-** Rails Version**
+**Rails Version**
 - 6.0.0
 
-** Database creation**
+**Database creation**
 - rails db:create
 
-** Database initialization**
+**Database initialization**
 - rails db:migrate
 
-** Initializing Server**
+**Initializing Server**
 - rails s
 
-** Pages**
+**Pages**
 - /users
 - /questions
