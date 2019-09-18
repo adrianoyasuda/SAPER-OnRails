@@ -1,24 +1,24 @@
-# README
+# SAPER OnRails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+** Ruby version**
+- 2.6.0
 
-Things you may want to cover:
+** Rails Version**
+- 6.0.0
 
-* Ruby version
+** Database creation**
+- rails db:create
 
-* System dependencies
+** Database initialization**
+- rails db:migrate
 
-* Configuration
+** Initializing Server**
+- rails s
 
-* Database creation
+** Pages**
+- /users
+- /questions
 
-* Database initialization
+##Class Diagram
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Class Diagram - Rails](https://user-images.githubusercontent.com/48556068/65173024-68984c00-da24-11e9-8238-65eb38ae478c.png)
