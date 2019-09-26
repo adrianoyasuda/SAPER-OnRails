@@ -7,11 +7,11 @@
 
 ## Class Diagram
 
-![Class Diagram - Rails](https://user-images.githubusercontent.com/48556068/65173024-68984c00-da24-11e9-8238-65eb38ae478c.png)
+![Class Diagram - Rails](https://user-images.githubusercontent.com/48556068/65717342-7b8bcb80-e077-11e9-993a-e52dfedd9904.png)
 
 ## MER
 
-![SAPER 2 0 (1)](https://user-images.githubusercontent.com/48556068/65174518-697ead00-da27-11e9-9bf0-f963ef67975d.png)
+![SAPER](https://user-images.githubusercontent.com/48556068/65717343-7b8bcb80-e077-11e9-8686-65c7633d4008.png)
 
 #### **Ruby version**
 - 2.6.0
