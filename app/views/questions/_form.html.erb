@@ -1,47 +1,18 @@
-<%= form_with(model: question, local: true) do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-        <% question.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@question) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :img_url %>
+    <%= f.input :description %>
+    <%= f.input :points %>
+    <%= f.input :courses %>
+    <%= f.input :user_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :img_url %>
-    <%= form.text_field :img_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
-  </div>
-
-  <div class="field">
-    <%= form.label :courses %>
-    <%= form.text_field :courses %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
