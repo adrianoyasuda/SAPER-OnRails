@@ -24,8 +24,8 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Post
+            <button type="button" class="btn btn-outline-sucess " data-toggle="modal" data-target="#exampleModal">
+              <%= image_tag asset_path('upload.png'), class: '', width: 18, height: 18 %>
             </button>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -66,20 +66,99 @@
           </li>
         </ul>
 
-         <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </li>
+<!--         <li class="nav-item">-->
+<!--          <form class="form-inline my-2 my-lg-0">-->
+<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--            <button class="btn btn-outline-sucess" type="submit">-->
+              <%#= image_tag asset_path('ic_search.png'), width: 23, height: 23 %>
+<!--            </button>-->
+<!--          </form>-->
+<!--        </li>-->
+
 
       </ul>
     </div>
   </nav>
-  <div class="container">
 
-    <%= yield %>
-  </div>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-3 sidebar">
+          <div class="list-group">
+                <span href="#" class="list-group-item cat-sidebar">
+                    <span class="pull-right" id="slide-submenu">
+                        <b class="fa fa-times">Categorias</b>
+                    </span>
+                </span>
+
+            <a href="/" class="list-group-item texto-menu">
+              <i class="fa fa-folder-open-o">
+                <%= image_tag asset_path('sidebar/ic_home.png'), class: '', width: 23, height: 23 %> Home
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <i class="fa fa-folder-open-o">
+                <%= image_tag asset_path('sidebar/ic_tads.png'), class: '', width: 23, height: 23 %> TADS
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <i class="fa fa-folder-open-o">
+                <%= image_tag asset_path('sidebar/ic_mamb.png'), class: '', width: 23, height: 23 %> Meio Ambiente
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <i class="fa fa-folder-open-o">
+                <%= image_tag asset_path('sidebar/ic_mec.png'), class: '', width: 23, height: 23 %> Mecanica
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <i class="fa fa-folder-open-o">
+                <%= image_tag asset_path('sidebar/ic_fis.png'), class: '', width: 23, height: 23 %> Fisica
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <i class="fa fa-bar-chart-o">
+                <%= image_tag asset_path('sidebar/ic_soc.png'), class: '', width: 23, height: 23 %> Sociais
+              </i>
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <%= image_tag asset_path('sidebar/ic_humor.png'), class: '', width: 23, height: 23 %> Humor
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <%= image_tag asset_path('sidebar/ic_b.png'), class: '', width: 23, height: 23 %> Diversos
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <%= image_tag asset_path('sidebar/ic_graph.jpg'), class: '', width: 23, height: 23 %> Gráfico
+            </a>
+
+            <a href="#" class="list-group-item texto-menu">
+              <%= image_tag asset_path('sidebar/ic_relatorio.png'), class: '', width: 23, height: 23 %> Relatório
+            </a>
+
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 0">
+          <b style="font-size: 12px">&copy;2019 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 1.0</b>
+        </div>
+
+        <div class="col-md-7" >
+          <div class="scroll-container square scrollbar-dusty-grass square thin">
+            <div class="card-body">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
   </body>
 </html>
