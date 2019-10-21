@@ -1,4 +1,6 @@
-<h2>Sign up</h2>
+<div class="text-center">
+  <h2>Cadastrar-se</h2>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -18,8 +20,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Cadastrar", class: 'btn btn-primary'%>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>

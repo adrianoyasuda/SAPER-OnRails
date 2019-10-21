@@ -12,73 +12,65 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <%= link_to root_path, class: 'navbar-brand' do %>
-      <%= image_tag asset_path('logo.png'), class: '', width: 40, height: 30 %>SAPER
-    <% end %>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-sucess " data-toggle="modal" data-target="#exampleModal">
-              <%= image_tag asset_path('upload.png'), class: '', width: 18, height: 18 %>
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <%= image_tag asset_path('logo.png'), class: '', width: 40, height: 30 %>SAPER
         <% end %>
 
-        <ul class="navbar-nav my-2 my-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= user_signed_in? ? current_user.email : 'Visitante' %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% if user_signed_in? %>
-                <%= link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-              <% else %>
-                <%= link_to 'Login', new_user_session_path, class: 'dropdown-item' %>
-                <%= link_to 'Cadastre-se', new_user_registration_path, class: 'dropdown-item' %>
-              <% end %>
-            </div>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-sucess " data-toggle="modal" data-target="#exampleModal">
+                  <%= image_tag asset_path('upload.png'), class: '', width: 18, height: 18 %>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            <% end %>
 
-<!--         <li class="nav-item">-->
-<!--          <form class="form-inline my-2 my-lg-0">-->
-<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--            <button class="btn btn-outline-sucess" type="submit">-->
-              <%#= image_tag asset_path('ic_search.png'), width: 23, height: 23 %>
-<!--            </button>-->
-<!--          </form>-->
-<!--        </li>-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= user_signed_in? ? current_user.email : 'Visitante' %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if user_signed_in? %>
+                  <%= link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                <% else %>
+                  <%= link_to 'Login', new_user_session_path, class: 'dropdown-item' %>
+                  <%= link_to 'Cadastre-se', new_user_registration_path, class: 'dropdown-item' %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-
-      </ul>
-    </div>
-  </nav>
+      </div>
+    </nav>
 
     <div class="container">
       <div class="row mt-5">
@@ -92,54 +84,54 @@
 
             <a href="/" class="list-group-item texto-menu">
               <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_home.png'), class: '', width: 23, height: 23 %> Home
+                <%= image_tag asset_path('sidebar/ic_home.png'), class: 'ico_sidebar' %> Home
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
               <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_tads.png'), class: '', width: 23, height: 23 %> TADS
+                <%= image_tag asset_path('sidebar/ic_tads.png'), class: 'ico_sidebar'%> TADS
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
               <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_mamb.png'), class: '', width: 23, height: 23 %> Meio Ambiente
+                <%= image_tag asset_path('sidebar/ic_mamb.png'), class: 'ico_sidebar' %> Meio Ambiente
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
               <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_mec.png'), class: '', width: 23, height: 23 %> Mecanica
+                <%= image_tag asset_path('sidebar/ic_mec.png'), class: 'ico_sidebar' %> Mecanica
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
               <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_fis.png'), class: '', width: 23, height: 23 %> Fisica
+                <%= image_tag asset_path('sidebar/ic_fis.png'), class: 'ico_sidebar' %> Fisica
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
               <i class="fa fa-bar-chart-o">
-                <%= image_tag asset_path('sidebar/ic_soc.png'), class: '', width: 23, height: 23 %> Sociais
+                <%= image_tag asset_path('sidebar/ic_soc.png'), class: 'ico_sidebar' %> Sociais
               </i>
             </a>
 
             <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_humor.png'), class: '', width: 23, height: 23 %> Humor
+              <%= image_tag asset_path('sidebar/ic_humor.png'), class: 'ico_sidebar' %> Humor
             </a>
 
             <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_b.png'), class: '', width: 23, height: 23 %> Diversos
+              <%= image_tag asset_path('sidebar/ic_b.png'), class: 'ico_sidebar' %> Diversos
             </a>
 
             <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_graph.jpg'), class: '', width: 23, height: 23 %> Gráfico
+              <%= image_tag asset_path('sidebar/ic_graph.jpg'), class: 'ico_sidebar' %> Gráfico
             </a>
 
             <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_relatorio.png'), class: '', width: 23, height: 23 %> Relatório
+              <%= image_tag asset_path('sidebar/ic_relatorio.png'), class: 'ico_sidebar' %> Relatório
             </a>
 
           </div>
