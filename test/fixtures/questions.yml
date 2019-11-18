@@ -3,13 +3,15 @@
 one:
   title: MyString
   img_url: MyString
-  description: MyString
+  description: MyText
   points: 1
   user: one
+  course: one
 
 two:
   title: MyString
   img_url: MyString
-  description: MyString
+  description: MyText
   points: 1
   user: two
+  course: two

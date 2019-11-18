@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :questions
+  resources :courses
   resources :tags
   devise_for :users
   get 'home/index'

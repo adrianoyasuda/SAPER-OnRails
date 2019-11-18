@@ -14,6 +14,7 @@ class QuestionsTest < ApplicationSystemTestCase
     visit questions_url
     click_on "New Question"
 
+    fill_in "Course", with: @question.course_id
     fill_in "Description", with: @question.description
     fill_in "Img url", with: @question.img_url
     fill_in "Points", with: @question.points
@@ -29,6 +30,7 @@ class QuestionsTest < ApplicationSystemTestCase
     visit questions_url
     click_on "Edit", match: :first
 
+    fill_in "Course", with: @question.course_id
     fill_in "Description", with: @question.description
     fill_in "Img url", with: @question.img_url
     fill_in "Points", with: @question.points
