@@ -5,8 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :img_url
       t.string :description
       t.integer :points
-      t.string :courses
-      t.integer :user_id
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

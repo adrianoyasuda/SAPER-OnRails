@@ -2,14 +2,8 @@
 
 one:
   title: MyString
-  img_url: MyString
   description: MyString
-  points: 1
-  user: one
 
 two:
   title: MyString
-  img_url: MyString
   description: MyString
-  points: 1
-  user: two
