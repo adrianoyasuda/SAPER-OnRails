@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -67,17 +66,10 @@
                     </span>
                 </span>
 
-            <a href="/" class="list-group-item texto-menu">
-              <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_home.png'), class: 'ico_sidebar' %> Home
-              </i>
-            </a>
-
-
             <% @courses.each do |course| %>
               <a href="/" class="list-group-item texto-menu">
                 <i class="fa fa-folder-open-o">
-                  <%= image_tag asset_path(course.img), class: 'ico_sidebar' %> <% course.title %>
+                  <%= image_tag asset_path(course.img), class: 'ico_sidebar' %> <%= course.title %>
                 </i>
               </a>
             <% end %>
@@ -85,8 +77,8 @@
           </div>
         </div>
 
-        <div style="position: absolute; bottom: 0">
-          <b style="font-size: 12px">&copy;2019 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 1.0</b>
+        <div id='site_foot' >
+          <b >&copy;2019 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 1.0</b>
         </div>
 
         <div class="col-md-7" >
