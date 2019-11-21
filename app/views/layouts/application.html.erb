@@ -23,34 +23,17 @@
           <%= image_tag asset_path('logo.png'), class: '', width: 40, height: 30 %>SAPER
         <% end %>
 
+
+
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav ml-auto">
+
             <% if user_signed_in? %>
               <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-sucess " data-toggle="modal" data-target="#exampleModal">
-                  <%= image_tag asset_path('upload.png'), class: '', width: 18, height: 18 %>
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        ...
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <%= link_to new_question_path, class: 'nav-link' do %>
+                  <%= image_tag asset_path('upload.png'), width: 18, height: 18 %>
+                <% end %>
+
               </li>
             <% end %>
 
@@ -67,6 +50,7 @@
                 <% end %>
               </div>
             </li>
+
           </ul>
         </div>
 
@@ -89,51 +73,14 @@
               </i>
             </a>
 
-            <a href="#" class="list-group-item texto-menu">
-              <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_tads.png'), class: 'ico_sidebar'%> TADS
-              </i>
-            </a>
 
-            <a href="#" class="list-group-item texto-menu">
-              <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_mamb.png'), class: 'ico_sidebar' %> Meio Ambiente
-              </i>
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_mec.png'), class: 'ico_sidebar' %> Mecanica
-              </i>
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <i class="fa fa-folder-open-o">
-                <%= image_tag asset_path('sidebar/ic_fis.png'), class: 'ico_sidebar' %> Fisica
-              </i>
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <i class="fa fa-bar-chart-o">
-                <%= image_tag asset_path('sidebar/ic_soc.png'), class: 'ico_sidebar' %> Sociais
-              </i>
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_humor.png'), class: 'ico_sidebar' %> Humor
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_b.png'), class: 'ico_sidebar' %> Diversos
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_graph.jpg'), class: 'ico_sidebar' %> Gráfico
-            </a>
-
-            <a href="#" class="list-group-item texto-menu">
-              <%= image_tag asset_path('sidebar/ic_relatorio.png'), class: 'ico_sidebar' %> Relatório
-            </a>
+            <% @courses.each do |course| %>
+              <a href="/" class="list-group-item texto-menu">
+                <i class="fa fa-folder-open-o">
+                  <%= image_tag asset_path(course.img), class: 'ico_sidebar' %> <% course.title %>
+                </i>
+              </a>
+            <% end %>
 
           </div>
         </div>

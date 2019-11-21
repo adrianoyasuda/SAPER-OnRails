@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_174120) do
+ActiveRecord::Schema.define(version: 2019_11_21_135139) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
+    t.string "img"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -22,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_174120) do
     t.string "title"
     t.string "img_url"
     t.text "description"
-    t.integer "points"
+    t.integer "points", default: 0
     t.integer "user_id", null: false
     t.integer "course_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -31,9 +32,15 @@ ActiveRecord::Schema.define(version: 2019_11_18_174120) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "questions_tags", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["question_id"], name: "index_questions_tags_on_question_id"
+    t.index ["tag_id"], name: "index_questions_tags_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "title"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,4 +59,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_174120) do
 
   add_foreign_key "questions", "courses"
   add_foreign_key "questions", "users"
+  add_foreign_key "questions_tags", "questions"
+  add_foreign_key "questions_tags", "tags"
 end

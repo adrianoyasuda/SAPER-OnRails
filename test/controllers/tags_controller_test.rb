@@ -17,7 +17,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tag" do
     assert_difference('Tag.count') do
-      post tags_url, params: { tag: { description: @tag.description, title: @tag.title } }
+      post tags_url, params: { tag: { title: @tag.title } }
     end
 
     assert_redirected_to tag_url(Tag.last)
@@ -34,7 +34,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tag" do
-    patch tag_url(@tag), params: { tag: { description: @tag.description, title: @tag.title } }
+    patch tag_url(@tag), params: { tag: { title: @tag.title } }
     assert_redirected_to tag_url(@tag)
   end
 

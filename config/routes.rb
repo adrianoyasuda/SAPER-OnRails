@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :questions
   resources :courses
   resources :tags
+  resources :questions
   devise_for :users
   get 'home/index'
 
