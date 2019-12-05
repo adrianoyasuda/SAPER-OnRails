@@ -1,32 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="container bg-light rounded" >
+        <h5><%= @question.title %></h5>
 
-<p>
-  <strong>Img url:</strong>
-  <%= @question.img_url %>
-</p>
+        <% if @question.img_url == nil %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @question.description %>
-</p>
+        <%else %>
+          <center><%= image_tag asset_path(@question.img_url), width: 400 %></center>
+        <%end %>
 
-<p>
-  <strong>Points:</strong>
-  <%= @question.points %>
-</p>
+        <p><strong>Descrição: </strong></p>
+        <p><%= @question.description %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @question.user_id %>
-</p>
+        <div align="right">
 
-<p>
-  <strong>Course:</strong>
-  <%= @question.course_id %>
-</p>
+          <button type="button" class="btn btn-light">
+            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+          </button>
+
+          <a><strong><%= @question.points %></strong></a>
+
+          <button type="button" class="btn btn-light">
+            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="btn btn btn-light" href="">
+            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+            <strong><%= link_to 'Responder', @question ,  class: 'reply' %></strong>
+          </a>
+
+        </div>
+      </div>
 
