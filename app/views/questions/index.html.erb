@@ -1,37 +1,35 @@
-<p id="notice"><%= notice %></p>
+<% @questions.each do |question| %>
+      <div class="container bg-light rounded" >
+        <h5><%= question.title %></h5>
 
-<h1>Questions</h1>
+        <% if question.img_url == nil %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Img url</th>
-      <th>Description</th>
-      <th>Points</th>
-      <th>User</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <%else %>
+          <center><%= image_tag asset_path(question.img_url), width: 400 %></center>
+        <%end %>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.img_url %></td>
-        <td><%= question.description %></td>
-        <td><%= question.points %></td>
-        <td><%= question.user_id %></td>
-        <td><%= question.course_id %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <p><strong>Descrição: </strong></p>
+        <p><%= question.description %></p>
 
-<br>
+        <div align="right">
 
-<%= link_to 'New Question', new_question_path %>
+          <button type="button" class="btn btn-light">
+            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+          </button>
+
+          <a><strong><%= question.points %></strong></a>
+
+          <button type="button" class="btn btn-light">
+            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="btn btn btn-light" href="">
+            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+            <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
+          </a>
+
+        </div>
+      </div>
+  <td><%= link_to '.', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<hr class="style1">
+<% end %>
