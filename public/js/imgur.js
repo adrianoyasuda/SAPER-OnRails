@@ -188,8 +188,8 @@ var feedback = function(res) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         document.querySelector('.status').classList.add('bg-success');
         var content =
-            'Image : ' + '<br><input class="image-url" value=\"' + get_link + '\"/>'
-            + '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
+            ''+'<input id="img_url" value=' + get_link + ' type="hidden" name="question[img_url]"/>'
+            + '<img class="img" width="150px" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
         addImg('.status', content);
     }
 };
