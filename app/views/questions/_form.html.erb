@@ -4,10 +4,19 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <div class="form-group string optional question_title">
+      <label class="string optional" for="question_title">Título</label>
+      <input class="form-control string optional" type="text" name="question[title]" id="question_title">
+    </div>
+
     <p>Imagem</p>
     <div class="dropzone" style="margin-bottom: 15px"></div>
-    <%= f.input :description %>
+    <p class="pt-0 text-danger" style="font-size: 10px">Aguarde Aparecer a Miniatura da Imagem*</p>
+
+    <div class="form-group text optional question_description">
+      <label class="text optional" for="question_description">Descrição</label>
+      <textarea class="form-control text optional" name="question[description]" id="question_description"></textarea>
+    </div>
     <%= f.association :course %>
 
   </div>

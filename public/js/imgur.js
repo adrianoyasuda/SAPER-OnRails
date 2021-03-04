@@ -186,7 +186,7 @@ var feedback = function(res) {
     reportInfo(res, true);
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
-        document.querySelector('.status').classList.add('bg-success');
+        document.querySelector('.status').classList.add('text-center');
         var content =
             ''+'<input id="img_url" value=' + get_link + ' type="hidden" name="question[img_url]"/>'
             + '<img class="img" width="150px" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
