@@ -1,9 +1,8 @@
 
 
 <div class="row">
-  <div class="col-6">
-
-    <h4><img class="pr-3" width="118px" src="https://i.imgur.com/AEeOyEi.png" alt="avatar"><%= user_signed_in? ? current_user.email : 'Visitante' %></h4>
+  <div class="col-10">
+    <h4><img class="pr-3 pb-5" width="118px" src="https://i.imgur.com/AEeOyEi.png" alt="avatar"><%= user_signed_in? ? current_user.email : 'Visitante' %></h4>
   </div>
 </div>
 
@@ -35,6 +34,6 @@
 <% end %>
 
 
-<p>Não esta feliz? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p class="pt-3">Não esta feliz? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Voltar", :back %>
