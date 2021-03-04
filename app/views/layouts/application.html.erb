@@ -43,6 +43,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% if user_signed_in? %>
                   <%= link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                  <%= link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                 <% else %>
                   <%= link_to 'Login', new_user_session_path, class: 'dropdown-item' %>
                   <%= link_to 'Cadastre-se', new_user_registration_path, class: 'dropdown-item' %>
