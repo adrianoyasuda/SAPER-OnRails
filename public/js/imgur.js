@@ -1,7 +1,6 @@
 /* Imgur Upload Script */
 (function (root, factory) {
     "use strict";
-
     if (typeof define === 'function' && define.amd) {
         define([], factory);
     } else if (typeof exports === 'object') {
@@ -29,7 +28,7 @@
         this.callback = options.callback || undefined;
         this.dropzone = document.querySelectorAll('.dropzone');
         this.info = document.querySelectorAll('.info');
-
+        //Start
         this.run();
     };
 
@@ -77,7 +76,7 @@
 
             p1 = this.createEls('p', {}, 'Drop Image File Here');
             p2 = this.createEls('p', {}, 'Or click here to select image');
-            input = this.createEls('input', {type: 'file', className: 'input', accept: 'image/*'});
+            input = this.createEls('input', {type: 'file', multiple: 'multiple', className: 'input', accept: 'image/*'});
 
             Array.prototype.forEach.call(this.info, function (zone) {
                 zone.appendChild(p1);
@@ -94,7 +93,7 @@
 
             div = this.createEls('div', {className: 'loading-modal'});
             table = this.createEls('table', {className: 'loading-table'});
-            img = this.createEls('img', {className: 'loading-image', src: './css/loading-spin.svg'});
+            img = this.createEls('img', {className: 'loading-image', src: '../loading-spin.svg'});
 
             div.appendChild(table);
             table.appendChild(img);
@@ -105,7 +104,7 @@
 
             this.insertAfter(el, div);
         },
-        matchFiles: function (file, zone) {
+        matchFiles: function (file, zone, fileCount) {
             var status = zone.nextSibling;
 
             if (file.type.match(/image/) && file.type !== 'image/svg+xml') {
@@ -117,7 +116,9 @@
                 fd.append('image', file);
 
                 this.post(this.endpoint, fd, function (data) {
-                    document.body.classList.remove('loading');
+                    if (fileCount[0]+1 == fileCount[1]) {
+                        document.body.classList.remove('loading');
+                    }
                     typeof this.callback === 'function' && this.callback.call(this, data);
                 }.bind(this));
             } else {
@@ -136,7 +137,7 @@
 
                     for (i = 0, len = target.length; i < len; i += 1) {
                         file = target[i];
-                        this.matchFiles(file, zone);
+                        this.matchFiles(file, zone, [i, target.length]);
                     }
                 }
             }.bind(this), false);
@@ -165,3 +166,35 @@
 
     return Imgur;
 }));
+
+function reportInfo(vars, showType = false) {
+    if (showType === true) console.log(typeof vars);
+    console.log(vars);
+}
+
+function addImg(ele, content) {
+    var myDIV = document.querySelector(ele);
+    var newContent = document.createElement('div');
+    newContent.innerHTML = content;
+
+    while (newContent.firstChild) {
+        myDIV.appendChild(newContent.firstChild);
+    }
+}
+
+var feedback = function(res) {
+    reportInfo(res, true);
+    if (res.success === true) {
+        var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
+        document.querySelector('.status').classList.add('bg-success');
+        var content =
+            'Image : ' + '<br><input class="image-url" value=\"' + get_link + '\"/>'
+            + '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
+        addImg('.status', content);
+    }
+};
+
+new Imgur({
+    clientid: '4409588f10776f7', //You can change this ClientID
+    callback: feedback
+});

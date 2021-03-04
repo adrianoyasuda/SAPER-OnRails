@@ -1,34 +1,40 @@
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-<div class="container bg-light rounded" >
-        <h5><%= @question.title %></h5>
+    <div class="container bg-dark rounded" >
+      <h5><%= link_to @question.title, @question ,  class: 'reply text-light text-decoration-none' %></h5>
 
-        <% if @question.img_url == nil %>
+      <% if @question.img_url == nil %>
 
-        <%else %>
-          <center><%= image_tag asset_path(@question.img_url), width: 400 %></center>
-        <%end %>
+      <%else %>
+        <div style="text-align: center;"><%= image_tag asset_path(@question.img_url), width: 400 %></div>
+      <%end %>
 
-        <p><strong>Descrição: </strong></p>
-        <p><%= @question.description %></p>
+      <p class="pt-3"><strong>Descrição: </strong></p>
+      <p><%= @question.description %></p>
 
-        <div align="right">
+      <div align="right">
 
-          <button type="button" class="btn btn-light">
-            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
-          </button>
+        <button type="button" class="btn btn-dark">
+          <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+        </button>
 
-          <a><strong><%= @question.points %></strong></a>
+        <a class="text-black-50"><strong><%= @question.points %></strong></a>
 
-          <button type="button" class="btn btn-light">
-            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
-          </button>
+        <button type="button" class="btn btn-dark">
+          <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
+        </button>
 
-          <a class="btn btn btn-light" href="">
-            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
-            <strong><%= link_to 'Responder', @question ,  class: 'reply' %></strong>
-          </a>
-
-        </div>
+        <a class="btn btn btn-dark" href="">
+          <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+          <strong><%= link_to 'Responder', @question ,  class: 'reply' %></strong>
+        </a>
       </div>
+
+
+    </div>
+    <div>
+      <input type="text">
+    </div>
+
+
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="development" uuid="015a5d00-6229-4a75-a040-02ca0024d699">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\Usuario\Desktop\SAPER-OnRails\db\development.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="development [2]" uuid="f48e4c1e-b2b0-452a-8a76-de59dedd92cf">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\Usuario\Desktop\TCC\SAPER-OnRails\db\development.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>

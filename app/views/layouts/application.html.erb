@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SAPER</title>
+    <title>SAPER - Sistema Academico de Perguntas e Respostas</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <%= favicon_link_tag asset_path('logo_ico.png') %>
 
   </head>
 
-  <body>
+  <body class="bg-dark text-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +22,6 @@
         <%= link_to root_path, class: 'navbar-brand' do %>
           <%= image_tag asset_path('logo.png'), class: '', width: 40, height: 30 %>SAPER
         <% end %>
-
 
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -58,27 +58,28 @@
 
     <div class="container">
       <div class="row mt-5">
-        <div class="col-md-3 sidebar">
-          <div class="list-group">
-                <span href="#" class="list-group-item cat-sidebar">
+        <div class="col-md-3 sidebar bg-dark">
+          <div class="list-group text-light bg-dark">
+                <span href="#" class="list-group-item cat-sidebar bg-dark border-0">
                     <span class="pull-right" id="slide-submenu">
-                        <b class="fa fa-times">Categorias</b>
+                        <b class="fa fa-times ">Categorias</b>
                     </span>
                 </span>
 
             <% @courses.each do |course| %>
-              <a href="/" class="list-group-item texto-menu">
+              <%= link_to course, class: 'list-group-item texto-menu text-light bg-dark border-0' do %>
                 <i class="fa fa-folder-open-o">
                   <%= image_tag asset_path(course.img), class: 'ico_sidebar' %> <%= course.title %>
                 </i>
-              </a>
+              <% end %>
             <% end %>
 
+            
           </div>
         </div>
 
-        <div id='site_foot' >
-          <b >&copy;2019 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 1.0</b>
+        <div id='site_foot' class="pb-1" >
+          <b >&copy;2020 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 2.0</b>
         </div>
 
         <div class="col-md-7" >
@@ -92,7 +93,6 @@
       </div>
     </div>
 
-    <script src="/jserrado/imgur.js"></script>
-    <script src="/jserrado/upload.js"></script>
+    <script type="text/javascript" src="/js/imgur.js"></script>
   </body>
 </html>

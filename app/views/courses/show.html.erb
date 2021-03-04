@@ -1,14 +1,106 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+<!--<p>-->
+<!--  <strong>Title:</strong>-->
+  <%#= @course.title %>
+<!--</p>-->
+<!--<p>-->
+<!--  <strong>Img:</strong>-->
+  <%#= @course.img %>
+<!--</p>-->
+<!--<%#= link_to 'Edit', edit_course_path(@course) %> |-->
+<%#= link_to 'Back', courses_path %>
 
-<p>
-  <strong>Img:</strong>
-  <%= @course.img %>
-</p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+
+
+<% Question.all.order(:id).reverse_order.each do |question|  %>
+  <% if @course.id == 1 %>
+
+
+      <h5><%= link_to question.title, question ,  class: 'reply text-light text-decoration-none' %></h5>
+      <div class="container rounded " >
+
+
+        <% if question.img_url == nil %>
+          Categorias
+        <%else %>
+          <div class="img-aligner img-fluid">
+            <%= image_tag asset_path(question.img_url), width: 500 %>
+          </div>
+        <%end %>
+
+        <p><strong>Descrição: </strong></p>
+        <p><%= question.description %></p>
+
+        <div align="right">
+
+          <button type="button" class="btn btn-none">
+            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="text-black-50"><strong><%= question.points %></strong></a>
+
+          <button type="button" class="btn btn-none">
+            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="btn btn btn-none" href="">
+            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+            <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
+          </a>
+
+        </div>
+      </div>
+      <!--    <td><%#= link_to '.', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      <hr class="style1">
+
+  <%else %>
+
+    <% if question.course.id == @course.id %>
+      <h5><%= link_to question.title, question ,  class: 'reply text-light text-decoration-none' %></h5>
+      <div class="container rounded " >
+
+
+        <% if question.img_url == nil %>
+
+        <%else %>
+          <div class="img-aligner img-fluid">
+            <%= image_tag asset_path(question.img_url), width: 500 %>
+          </div>
+        <%end %>
+
+        <p><strong>Descrição: </strong></p>
+        <p><%= question.description %></p>
+
+        <div align="right">
+
+          <button type="button" class="btn btn-none">
+            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="text-black-50"><strong><%= question.points %></strong></a>
+
+          <button type="button" class="btn btn-none">
+            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
+          </button>
+
+          <a class="btn btn btn-none" href="">
+            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+            <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
+          </a>
+
+        </div>
+      </div>
+      <!--    <td><%#= link_to '.', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      <hr class="style1">
+    <% end %>
+
+  <% end %>
+
+
+
+
+
+
+<% end %>

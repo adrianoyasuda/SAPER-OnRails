@@ -1,11 +1,14 @@
 <% @questions.each do |question| %>
-      <div class="container bg-light rounded" >
-        <h5><%= question.title %></h5>
+      <h5><%= link_to question.title, question ,  class: 'reply text-light text-decoration-none' %></h5>
+      <div class="container rounded " >
+
 
         <% if question.img_url == nil %>
 
         <%else %>
-          <center><%= image_tag asset_path(question.img_url), width: 400 %></center>
+          <div class="img-aligner img-fluid">
+            <%= image_tag asset_path(question.img_url), width: 500 %>
+          </div>
         <%end %>
 
         <p><strong>Descrição: </strong></p>
@@ -13,17 +16,17 @@
 
         <div align="right">
 
-          <button type="button" class="btn btn-light">
+          <button type="button" class="btn btn-none">
             <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
           </button>
 
-          <a><strong><%= question.points %></strong></a>
+          <a class="text-black-50"><strong><%= question.points %></strong></a>
 
-          <button type="button" class="btn btn-light">
+          <button type="button" class="btn btn-none">
             <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
           </button>
 
-          <a class="btn btn btn-light" href="">
+          <a class="btn btn btn-none" href="">
             <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
             <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
           </a>

@@ -18,6 +18,3 @@ Course.create title:'Ciências Sociais', img:'sidebar/ic_soc.png'
 Course.create title:'Humor', img:'sidebar/ic_humor.png'
 Course.create title:'Outros', img:'sidebar/ic_b.png'
 
-# Admin things
-Course.create title:'Gráfico', img:'sidebar/ic_graph.jpg'
-Course.create title:'Relatório', img:'sidebar/ic_relatorio.png'

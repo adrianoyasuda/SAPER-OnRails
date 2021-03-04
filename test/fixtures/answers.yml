@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  points: 1
+  question: one
+  user: one
+  status: false
+
+two:
+  description: MyString
+  points: 1
+  question: two
+  user: two
+  status: false
