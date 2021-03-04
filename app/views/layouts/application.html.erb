@@ -62,13 +62,13 @@
           <div class="list-group text-light bg-dark">
                 <span href="#" class="list-group-item cat-sidebar bg-dark border-0">
                     <span class="pull-right" id="slide-submenu">
-                        <b class="fa fa-times ">Categorias</b>
+                        <b>Categorias</b>
                     </span>
                 </span>
 
             <% @courses.each do |course| %>
               <%= link_to course, class: 'list-group-item texto-menu text-light bg-dark border-0' do %>
-                <i class="fa fa-folder-open-o">
+                <i>
                   <%= image_tag asset_path(course.img), class: 'ico_sidebar' %> <%= course.title %>
                 </i>
               <% end %>

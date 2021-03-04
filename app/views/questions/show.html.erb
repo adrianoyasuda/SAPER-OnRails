@@ -1,4 +1,5 @@
     <p id="notice"><%= notice %></p>
+    <script src="https://kit.fontawesome.com/e5528dc2f2.js" crossorigin="anonymous"></script>
 
     <div class="container bg-dark rounded" >
       <h5><%= link_to @question.title, @question ,  class: 'reply text-light text-decoration-none' %></h5>
@@ -30,10 +31,44 @@
         </a>
       </div>
 
+      <hr class="style1 pb-5">
+
+      <div class="card">
+        <h5 class="card-header text-dark text-center">Respostas</h5>
+        <div class="card-body text-dark">
+
+          <% Answer.all.order(:id).each do |answer|  %>
+            <!--<b style="font-size: 9px"><%#= answer.user %></b>-->
+            <% if answer.question.id == @question.id %>
+              <p><strong><i class="fas fa-user-ninja"></i> </strong><%= answer.description %></p>
+              <hr class="style1 pb-3">
+
+            <%end %>
+
+          <% end %>
+
+
+        </div>
+      </div>
+
+
 
     </div>
     <div>
-      <input type="text">
+      <%= simple_form_for(Answer.new) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <div class="form-inputs pt-5">
+          <label class="string optional font-weight-bold text-black-50" for="answer_description">Seu comentário:</label>
+          <textarea class="form-control string optional bg-light" rows="4" placeholder="Posso lhe ajudar da seguinte forma..." name="answer[description]" id="answer_description" required></textarea>
+          <input type="hidden" name="answer[question_id]" id="answer_question_id" value="<%=@question.id%>" required>
+        </div>
+
+        <div class="form-actions pt-2 float-right">
+          <input type="submit" name="commit" value="Enviar" class="btn btn-primary" data-disable-with="Create Answer">
+        </div>
+      <% end %>
     </div>
 
 
