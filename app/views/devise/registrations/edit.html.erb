@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-6">
 
-    <h2><img width="118px" src="https://i.imgur.com/AEeOyEi.png" alt="avatar">Perfil</h2>
+    <h4><img class="pr-3" width="118px" src="https://i.imgur.com/AEeOyEi.png" alt="avatar"><%= user_signed_in? ? current_user.email : 'Visitante' %></h4>
   </div>
 </div>
 
