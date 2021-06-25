@@ -1,0 +1,2 @@
+module QuestionPointsHelper
+end

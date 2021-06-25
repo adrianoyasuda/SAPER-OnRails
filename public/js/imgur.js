@@ -93,10 +93,10 @@
 
             div = this.createEls('div', {className: 'loading-modal'});
             table = this.createEls('table', {className: 'loading-table'});
-            img = this.createEls('img', {className: 'loading-image', src: '../loading-spin.svg'});
+            // img = this.createEls('img', {className: 'loading-image', src: '../loading-spin.svg'});
 
             div.appendChild(table);
-            table.appendChild(img);
+            // table.appendChild(img);
             document.body.appendChild(div);
         },
         status: function (el) {

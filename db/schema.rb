@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_083512) do
+ActiveRecord::Schema.define(version: 2021_06_22_112340) do
 
   create_table "answers", force: :cascade do |t|
     t.string "description"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 2021_03_04_083512) do
     t.string "img"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "question_points", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "point"
+    t.integer "user_id", null: false
+    t.integer "extra"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["extra"], name: "index_question_points_on_extra", unique: true
+    t.index ["question_id"], name: "index_question_points_on_question_id"
+    t.index ["user_id"], name: "index_question_points_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -71,6 +83,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_083512) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "question_points", "questions"
+  add_foreign_key "question_points", "users"
   add_foreign_key "questions", "courses"
   add_foreign_key "questions", "users"
   add_foreign_key "questions_tags", "questions"

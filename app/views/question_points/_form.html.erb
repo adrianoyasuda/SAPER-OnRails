@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@question_point) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :question %>
+    <%= f.input :point %>
+    <%= f.association :user %>
+    <%= f.input :extra %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

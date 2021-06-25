@@ -1,8 +1,6 @@
 <% @questions.each do |question| %>
-      <h5><%= link_to question.title, question ,  class: 'reply text-light text-decoration-none' %></h5>
-      <div class="container rounded " >
-
-
+      <div class="container rounded bg-dark" >
+        <h5><%= link_to question.title, question ,  class: 'reply text-light text-decoration-none' %></h5>
         <% if question.img_url == nil %>
 
         <%else %>
@@ -16,23 +14,29 @@
 
         <div align="right">
 
-          <button type="button" class="btn btn-none">
-            <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
-          </button>
+          <%= simple_form_for(QuestionPoint.new) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-          <a class="text-black-50"><strong><%= question.points %></strong></a>
+              <input type="hidden" name="question_point[question_id]" id="answer_question_id" value="<%=question.id%>" required>
+            <% if user_signed_in? %>
+              <input type="hidden" name="question_point[extra]" id="answer_question_extra" value="<%=question.id%><%=current_user.id%>" required>
+              <button type="submit" name="commit" value="Enviar" class="btn btn-none">
+                <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+              </button>
+            <%else %>
+                <%= image_tag asset_path('up.png'), width: 18, height: 18 , title: "Login disponivel ao logar."%>
+            <%end %>
 
-          <button type="button" class="btn btn-none">
-            <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
-          </button>
+            <a class="text-black-50"><strong><%= QuestionPoint.where(question_id: question.id).count%></strong></a>
 
-          <a class="btn btn btn-none" href="">
-            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
-            <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
-          </a>
-
+            <a class="btn btn btn-none" href="">
+              <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+              <strong><%= link_to 'Responder', question ,  class: 'reply' %></strong>
+            </a>
+          <% end %>
         </div>
+
       </div>
-<!--  <td><%#= link_to '.', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 <hr class="style1">
 <% end %>

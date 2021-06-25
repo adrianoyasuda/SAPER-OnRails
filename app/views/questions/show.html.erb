@@ -1,13 +1,14 @@
     <p id="notice"><%= notice %></p>
     <script src="https://kit.fontawesome.com/e5528dc2f2.js" crossorigin="anonymous"></script>
 
-    <div class="container bg-dark rounded" >
+    <div class="container rounded bg-dark" >
       <h5><%= link_to @question.title, @question ,  class: 'reply text-light text-decoration-none' %></h5>
-
       <% if @question.img_url == nil %>
 
       <%else %>
-        <div style="text-align: center;"><%= image_tag asset_path(@question.img_url), width: 400 %></div>
+        <div class="img-aligner img-fluid">
+          <%= image_tag asset_path(@question.img_url), width: 500 %>
+        </div>
       <%end %>
 
       <p class="pt-3"><strong>Descrição: </strong></p>
@@ -15,60 +16,71 @@
 
       <div align="right">
 
-        <button type="button" class="btn btn-dark">
-          <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
-        </button>
+        <%= simple_form_for(QuestionPoint.new) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <a class="text-black-50"><strong><%= @question.points %></strong></a>
+          <input type="hidden" name="question_point[question_id]" id="answer_question_id" value="<%=@question.id%>" required>
+          <% if user_signed_in? %>
+            <input type="hidden" name="question_point[extra]" id="answer_question_extra" value="<%=@question.id%><%=current_user.id%>" required>
+            <button type="submit" name="commit" value="Enviar" class="btn btn-none">
+              <%= image_tag asset_path('up.png'), width: 18, height: 18 %>
+            </button>
+          <%else %>
+            <%= image_tag asset_path('up.png'), width: 18, height: 18 , title: "Login disponivel ao logar."%>
+          <%end %>
 
-        <button type="button" class="btn btn-dark">
-          <%= image_tag asset_path('down.png'), width: 18, height: 18 %>
-        </button>
 
-        <a class="btn btn btn-dark" href="">
-          <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
-          <strong><%= link_to 'Responder', @question ,  class: 'reply' %></strong>
-        </a>
+
+          <a class="text-black-50"><strong><%= QuestionPoint.where(question_id: @question.id).count%></strong></a>
+
+
+          <a class="btn btn btn-none" href="">
+            <%= image_tag asset_path('Answer.png'), width: 20, height: 20 %>
+            <strong><%= link_to 'Responder', @question ,  class: 'reply' %></strong>
+          </a>
+        <% end %>
       </div>
 
-      <hr class="style1 pb-5">
-
-      <div class="card">
-        <h5 class="card-header text-dark text-center">Respostas</h5>
-        <div class="card-body text-dark">
+      <div class="card border-0">
+        <h5 class="card-header bg-dark text-white text-center pt-3">Respostas</h5>
+        <div class="card-body bg-dark text-light">
 
           <% Answer.all.order(:id).each do |answer|  %>
             <!--<b style="font-size: 9px"><%#= answer.user %></b>-->
             <% if answer.question.id == @question.id %>
-              <p><strong><i class="fas fa-user-ninja"></i> </strong><%= answer.description %></p>
-              <hr class="style1 pb-3">
+              <p><%= image_tag asset_path('anon.png'), class: '', width: 36 %> <%= answer.description %></p>
 
             <%end %>
 
           <% end %>
 
-
         </div>
       </div>
-
-
-
     </div>
     <div>
-      <%= simple_form_for(Answer.new) do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <% if user_signed_in? %>
+        <%= simple_form_for(Answer.new) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="form-inputs pt-5">
-          <label class="string optional font-weight-bold text-black-50" for="answer_description">Seu comentário:</label>
-          <textarea class="form-control string optional bg-light" rows="4" placeholder="Posso lhe ajudar da seguinte forma..." name="answer[description]" id="answer_description" required></textarea>
-          <input type="hidden" name="answer[question_id]" id="answer_question_id" value="<%=@question.id%>" required>
-        </div>
+          <div class="form-inputs pt-5">
+            <label class="string optional font-weight-bold text-light" for="answer_description">Seu comentário ou Resposta:</label>
+            <textarea class="form-control string optional bg-dark text-light" rows="4" placeholder="Posso lhe ajudar da seguinte forma..." name="answer[description]" id="answer_description" required></textarea>
+            <input type="hidden" name="answer[question_id]" id="answer_question_id" value="<%=@question.id%>" required>
+          </div>
 
-        <div class="form-actions pt-2 float-right">
-          <input type="submit" name="commit" value="Enviar" class="btn btn-success" data-disable-with="Create Answer">
+          <div class="form-actions pt-2 float-right">
+            <input type="submit" name="commit" value="Enviar" class="btn btn-success" data-disable-with="Create Answer">
+          </div>
+          <% end %>
+
+        <%else %>
+        <div class="col-12 text-center ">
+          <label class="font-weight-bold text-light" for="answer_description">Realize o Login para Comentar ou Responder a Questão!</label>
         </div>
-      <% end %>
+        <% end %>
+
     </div>
 
 

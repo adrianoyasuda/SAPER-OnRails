@@ -23,7 +23,6 @@
           <%= image_tag asset_path('logo.png'), class: '', width: 36 %>SAPER
         <% end %>
 
-
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav ml-auto">
 
@@ -32,7 +31,6 @@
                 <%= link_to new_question_path, class: 'nav-link' do %>
                   <%= image_tag asset_path('upload.png'), width: 18, height: 18 %>
                 <% end %>
-
               </li>
             <% end %>
 
@@ -50,9 +48,17 @@
                 <% end %>
               </div>
             </li>
-
           </ul>
         </div>
+
+        <div class="col-2">
+          <div class="input-group">
+            <input type="search" class="form-control rounded bg-dark border-0" placeholder="Pesquisar" aria-label="Search"
+                   aria-describedby="search-addon" />
+            <button type="button" class="btn btn-none border-0">🔍</button>
+          </div>
+        </div>
+
 
       </div>
     </nav>
@@ -80,7 +86,7 @@
         </div>
 
         <div id='site_foot' class="pb-1" >
-          <b >&copy;2020 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 2.0</b>
+          <b >&copy;2021 &nbsp;&nbsp;&raquo;&nbsp;&nbsp; Adriano Yasuda &nbsp;&nbsp;&raquo;&nbsp;&nbsp;versão 3.0</b>
         </div>
 
         <div class="col-md-7" >
